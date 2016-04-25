@@ -4,8 +4,11 @@ AWS IoT Hackday using a Nexo Nutrunner, Virtual Reality and Amazon WebServices
 # Bookmarks
 
 Our github: https://github.com/aws-hackday-april2016/aws-nutrunner
+
 Sempahore CI: https://semaphoreci.com/mikehaller/aws-nutrunner/
+
 Amazon Alexa Skill: https://developer.amazon.com/edw/home.html#/skills/list
+
 Amazon Lambda Functions: https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions
 
 # Nutrunner: AWS Lambda function for Alexa Skill 
