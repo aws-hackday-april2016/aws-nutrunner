@@ -1,0 +1,39 @@
+{
+  "intents": [
+    {
+      "intent": "LoadProgramm",
+      "slots": [
+        {
+          "name": "program",
+          "type": "LIST_OF_PROGRAMS"
+        }
+      ]
+    },
+    {
+      "intent": "Reset"
+    },
+    {
+      "intent": "GetBattery"
+    },
+    {
+      "intent": "GetLastJob"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.RepeatIntent"
+    },
+    {
+      "intent": "AMAZON.StartOverIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    }
+
+  ]
+}
+

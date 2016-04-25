@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "response": {
+    "outputSpeech": {
+      "type": "PlainText",
+      "text": "Hello World!"
+    },
+    "card": {
+      "content": "Hello World!",
+      "title": "Greeter",
+      "type": "Simple"
+    },
+    "shouldEndSession": true
+  },
+  "sessionAttributes": {}
+}

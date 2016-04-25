@@ -1,0 +1,35 @@
+
+LoadProgramm please load program {program} into nutrunner
+LoadProgramm load {program} into nutrunner
+LoadProgramm load {program}
+LoadProgramm start {program}
+LoadProgramm do load {program}
+LoadProgramm do the {program}
+
+GetBattery what is the battery
+GetBattery what is the battery status
+GetBattery what is your battery status
+GetBattery what is your battery
+GetBattery what is your status
+GetBattery how much energey is left
+GetBattery tell me how much power is left
+
+GetLastJob what was my last job
+GetLastJob how well have i done
+GetLastJob how well was i doing
+GetLastJob how good was my last job
+GetLastJob how good was my last tightening
+GetLastJob how well was the tightening
+GetLastJob was the tightening good
+GetLastJob was the tightening bad
+
+Reset please reset
+Reset please restart
+Reset let's try again
+Reset let's start over
+Reset let's start again
+Reset reset
+Reset restart
+Reset try again
+Reset retry
+Reset can you please reset the user interface
