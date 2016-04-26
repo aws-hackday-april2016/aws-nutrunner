@@ -1,0 +1,13 @@
+{
+  "sql": "SELECT * FROM 'my-topic'",
+  "description": "Send tigthening result to mobile app via lambda doing aggregation",
+  "actions": [
+    {
+      "lambda": {
+        "functionArn": "arn:aws:lambda:ap-northeast-1:011615027733:function:evalResult"
+      }
+    }
+  ],
+  "ruleDisabled": false,
+  "awsIotSqlVersion": "2015-10-08"
+}
