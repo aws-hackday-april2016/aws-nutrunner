@@ -1,0 +1,63 @@
+{
+	"id": "5e5833d5-83ea-ccb9-47ca-7752885e955d",
+	"name": "AWS-Hackday",
+	"description": "",
+	"order": [
+		"bd52ff32-9b2c-523b-ce1b-e3aac05a6795",
+		"3649ee92-e7f1-231f-89b0-269ab15fef8e"
+	],
+	"folders": [],
+	"timestamp": 1461642991962,
+	"owner": 0,
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "3649ee92-e7f1-231f-89b0-269ab15fef8e",
+			"headers": "Content-Type: application/json\nHost: ADB6I2V5RYSP2.iot.ap-northeast-1.amazonaws.com\nContent-Length: 64\nX-Amz-Date: 20160426T055537Z\nAuthorization: AWS4-HMAC-SHA256 Credential=AKIAI5YUCTXMVWPUHDZQ/20160426/ap-northeast-1/iotdata/aws4_request, SignedHeaders=content-length;content-type;host;x-amz-date, Signature=242875d219eab423fe85c33439a668c3ec351a77364cb2ac2544bcc7d1ec5557\n",
+			"url": "https://ADB6I2V5RYSP2.iot.ap-northeast-1.amazonaws.com/things/nexo/shadow",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "awsSigV4",
+			"helperAttributes": {
+				"accessKey": "AKIAI5YUCTXMVWPUHDZQ",
+				"secretKey": "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",
+				"region": "ap-northeast-1",
+				"saveToRequest": true
+			},
+			"time": 1461650153500,
+			"name": "Reset Nexo Shadow Demodata",
+			"description": "",
+			"collectionId": "5e5833d5-83ea-ccb9-47ca-7752885e955d",
+			"responses": [],
+			"rawModeData": "{\n  \"state\": {\n    \"desired\": {\n      \"program\": \"5\"\n    }\n  }\n}"
+		},
+		{
+			"id": "bd52ff32-9b2c-523b-ce1b-e3aac05a6795",
+			"headers": "Content-Type: application/x-www-form-urlencoded\nHost: data.iot.ap-northeast-1.amazonaws.com\nX-Amz-Date: 20160426T054603Z\nAuthorization: AWS4-HMAC-SHA256 Credential=AKIAI5YUCTXMVWPUHDZQ/20160426/ap-northeast-1/execute-api/aws4_request, SignedHeaders=content-type;host;x-amz-date, Signature=6ce4cad8c88be6b1875e7a61132ca356ae8e71a0437707a61af4903b1dc7a261\n",
+			"url": "https://data.iot.ap-northeast-1.amazonaws.com/things/nexo/shadow",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "awsSigV4",
+			"helperAttributes": {
+				"accessKey": "AKIAI5YUCTXMVWPUHDZQ",
+				"secretKey": "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",
+				"region": "ap-northeast-1",
+				"saveToRequest": true
+			},
+			"time": 1461649570959,
+			"name": "Get Nexo Shadow",
+			"description": "",
+			"collectionId": "5e5833d5-83ea-ccb9-47ca-7752885e955d",
+			"responses": []
+		}
+	]
+}
