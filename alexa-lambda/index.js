@@ -221,6 +221,12 @@ var APP_ID = "amzn1.echo-sdk-ams.app.b24af45c-3cd9-4ae0-8de8-f5eca40af046"; //re
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript#Inheritance
  */
+
+var aws = require('aws-sdk');
+var lambda = new aws.Lambda({
+  region: 'ap-northeast-1' //change to your region
+});
+ 
 var HelloWorld = function () {
     AlexaSkill.call(this, APP_ID);
 };
@@ -254,20 +260,76 @@ HelloWorld.prototype.intentHandlers = {
         response.tell("Okay I resetted the Bosch Nexo nutrunner for you. Try again now!");
     },
     "Hello": function (intent, session, response) {
-        response.ask("Welcome new player " + intent.slots.playername.value, "Which nut would you like to fasten?");
+        // response.ask("Welcome new player " + intent.slots.playername.value, "Which nut would you like to fasten?");
+		// Call Alex' Lambda Function: newTighteningProcess
+		
+		var params = {
+			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:newTighteningProcess', /* should be ARN */
+			  ClientContext: '',
+			  InvocationType: 'RequestResponse',
+			  LogType: 'Tail',
+			  Payload: JSON.stringify(intent.slots.playername),
+			  Qualifier: '$LATEST'
+			};
+		lambda.invoke(params, function(err, data) {
+			  if (err) console.log(err, err.stack); // an error occurred
+			  else {
+				  console.log(data);           // successful response
+				  response.tell("welcome new player " + intent.slots.playername.value);
+			  }
+			});		
+		
     },
     "SelectNut": function (intent, session, response) {
         response.tell("Start fastening your nuts, begin with this nut now.");
     },
     "LoadProgram": function (intent, session, response) {
         response.tell("Okay i am done loading the new program");
+		// updateNexoProgram
+		
+		var params = {
+			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:updateNexoProgram', /* should be ARN */
+			  ClientContext: '',
+			  InvocationType: 'RequestResponse',
+			  LogType: 'Tail',
+			  Payload: JSON.stringify(intent.slots.programname),
+			  Qualifier: '$LATEST'
+			};
+		lambda.invoke(params, function(err, data) {
+			  if (err) console.log(err, err.stack); // an error occurred
+			  else {
+				  console.log(data);           // successful response
+				  response.tell("welcome new player " + intent.slots.playername.value);
+			  }
+			});	
     },
     "GetBattery": function (intent, session, response) {
         // Call Bosch IoT Things using JavaScript to retrieve the battery status of Nutrunner from
         response.tell("Oh my gosh my battery is dieing. please help me and stick a new battery in.");
     },
+    "GetProgramNumber": function (intent, session, response) {
+		// getNexoBatteryStatus
+		
+			var params = {
+			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:newTighteningProcess', /* should be ARN */
+			  ClientContext: '',
+			  InvocationType: 'RequestResponse',
+			  LogType: 'Tail',
+			  Payload: '',
+			  Qualifier: '$LATEST'
+			};
+			lambda.invoke(params, function(err, data) {
+			  if (err) console.log(err, err.stack); // an error occurred
+			  else {
+				  console.log(data);           // successful response
+				  response.tell("the nexo is equipped with program number 1337");
+			  }
+			});		
+
+    },
     "GetLastJob": function (intent, session, response) {
         response.tell("You have been doing wonderful, keep going");
+		// evaluateTighteningResult
     },
     "GetSummary": function (intent, session, response) {
         response.tell("You guys are doing great, go on");
