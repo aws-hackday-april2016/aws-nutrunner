@@ -1,7 +1,16 @@
 {
   "intents": [
-    {
-      "intent": "LoadProgramm",
+    {   
+      "intent": "Hello",
+      "slots": [
+        {
+          "name": "playername",
+          "type": "LIST_OF_PLAYERNAMES"
+        }
+      ]
+    },
+	{
+      "intent": "LoadProgram",
       "slots": [
         {
           "name": "program",
@@ -13,10 +22,22 @@
       "intent": "Reset"
     },
     {
+      "intent": "SelectNut",
+      "slots": [
+        {
+          "name": "nutname",
+          "type": "LIST_OF_NUTS"
+        }
+      ]
+    },
+    {
       "intent": "GetBattery"
     },
     {
       "intent": "GetLastJob"
+    },
+    {
+      "intent": "GetSummary"
     },
     {
       "intent": "AMAZON.HelpIntent"
@@ -36,4 +57,3 @@
 
   ]
 }
-

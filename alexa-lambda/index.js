@@ -230,20 +230,20 @@ HelloWorld.prototype = Object.create(AlexaSkill.prototype);
 HelloWorld.prototype.constructor = HelloWorld;
 
 HelloWorld.prototype.eventHandlers.onSessionStarted = function (sessionStartedRequest, session) {
-    console.log("HelloWorld onSessionStarted requestId: " + sessionStartedRequest.requestId
+    console.log("Nutrunner onSessionStarted requestId: " + sessionStartedRequest.requestId
         + ", sessionId: " + session.sessionId);
     // any initialization logic goes here
 };
 
 HelloWorld.prototype.eventHandlers.onLaunch = function (launchRequest, session, response) {
-    console.log("HelloWorld onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
-    var speechOutput = "Welcome to the Amazon Bosch Hackday. Ask me about my battery.";
-    var repromptText = "You foobar";
+    console.log("Nutrunner onLaunch requestId: " + launchRequest.requestId + ", sessionId: " + session.sessionId);
+    var speechOutput = "Welcome to the Amazon Bosch Hackday.";
+    var repromptText = "Say hello and state your name to begin your nutrunner training.";
     response.ask(speechOutput, repromptText);
 };
 
 HelloWorld.prototype.eventHandlers.onSessionEnded = function (sessionEndedRequest, session) {
-    console.log("HelloWorld onSessionEnded requestId: " + sessionEndedRequest.requestId
+    console.log("Nutrunner onSessionEnded requestId: " + sessionEndedRequest.requestId
         + ", sessionId: " + session.sessionId);
     // any cleanup logic goes here
 };
@@ -253,21 +253,39 @@ HelloWorld.prototype.intentHandlers = {
     "Reset": function (intent, session, response) {
         response.tell("Okay I resetted the Bosch Nexo nutrunner for you. Try again now!");
     },
-    "LoadProgramm": function (intent, session, response) {
-        response.tellWithCard("Hello World!", "Greeter", "Hello World!");
+    "Hello": function (intent, session, response) {
+        response.ask("Welcome new player " + intent.slots.playername.value, "Which nut would you like to fasten?");
+    },
+    "SelectNut": function (intent, session, response) {
+        response.tell("Start fastening your nuts, begin with this nut now.");
+    },
+    "LoadProgram": function (intent, session, response) {
+        response.tell("Okay i am done loading the new program");
     },
     "GetBattery": function (intent, session, response) {
-        
         // Call Bosch IoT Things using JavaScript to retrieve the battery status of Nutrunner from
-        
-        
-        response.tell("my battery is low");
+        response.tell("Oh my gosh my battery is dieing. please help me and stick a new battery in.");
     },
     "GetLastJob": function (intent, session, response) {
-        response.tell("");
+        response.tell("You have been doing wonderful, keep going");
+    },
+    "GetSummary": function (intent, session, response) {
+        response.tell("You guys are doing great, go on");
     },
     "AMAZON.HelpIntent": function (intent, session, response) {
-        response.ask("Ask me to restart", "Ask me to restart");
+        response.tell("Ask me to restart", "Ask me to restart");
+    },
+    "AMAZON.CancelIntent": function (intent, session, response) {
+        response.tell("Okay your tightening training has been cancelled. Come back soon and try again.");
+    },
+    "AMAZON.RepeatIntent": function (intent, session, response) {
+        response.tell("Upsi somethign went wrong. Why don't you try again.");
+    },
+    "AMAZON.StartOverIntent": function (intent, session, response) {
+        response.tell("Okay let's try again my son");
+    },
+    "AMAZON.StopIntent": function (intent, session, response) {
+        response.tell("Training session has ended. Come back tomorrow.");
     }
 };
 

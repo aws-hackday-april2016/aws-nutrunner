@@ -1,16 +1,32 @@
+Hello hello
+Hello welcome
+Hello hey
+Hello hi
+Hello hello my name is {playername}
+Hello welcome my name is {playername}
+Hello hey my name is {playername}
+Hello hi my name is {playername}
+Hello my name is {playername}
 
-LoadProgramm please load program {program} into nutrunner
-LoadProgramm load {program} into nutrunner
-LoadProgramm load {program}
-LoadProgramm start {program}
-LoadProgramm do load {program}
-LoadProgramm do the {program}
+LoadProgram please load program {program} into nutrunner
+LoadProgram load {program} into nutrunner
+LoadProgram load {program}
+LoadProgram start {program}
+LoadProgram do load {program}
+LoadProgram do the {program}
+
+SelectNut select nut {nutname}
+SelectNut select {nutname}
+SelectNut switch to nut {nutname}
+SelectNut i start to tight {nutname}
+SelectNut let's fasten {nutname}
 
 GetBattery what is the battery
 GetBattery what is the battery status
 GetBattery what is your battery status
 GetBattery what is your battery
 GetBattery what is your status
+GetBattery how is the battery
 GetBattery how much energey is left
 GetBattery tell me how much power is left
 
@@ -22,6 +38,15 @@ GetLastJob how good was my last tightening
 GetLastJob how well was the tightening
 GetLastJob was the tightening good
 GetLastJob was the tightening bad
+GetLastJob how did i do
+
+GetSummary what is my summary
+GetSummary how well are we doing
+GetSummary what is the team status
+GetSummary give me the summary
+GetSummary give me summary
+GetSummary state the summary
+GetSummary summary
 
 Reset please reset
 Reset please restart
