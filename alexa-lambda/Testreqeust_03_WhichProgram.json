@@ -1,0 +1,23 @@
+{
+  "session": {
+    "sessionId": "SessionId.734b8a89-a75b-4c42-aaa1-aa1637c4812d",
+    "application": {
+      "applicationId": "amzn1.echo-sdk-ams.app.b24af45c-3cd9-4ae0-8de8-f5eca40af046"
+    },
+    "user": {
+      "userId": "amzn1.ask.account.AFP3ZWPOS2BGJR7OWJZ3DHPKMOMNWY4AY66FUR7ILBWANIHQN73QGG4L45SM5WUWPAJXOKK6L74X5XOHR3U6RPBUDFT7WJ2YKLRPHH5LAUJYIZURSDGRA3C6XGT2YRIK3IY27AHU4GD7DEAKUE7B77CXYMATHBERZIIOH6J4XKFLF6X25K6OPERF5FTGQFVOACXDDPIAHRCJCSA"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.7e9dba31-0d3b-4a6e-affb-b485dc0b0480",
+    "timestamp": "2016-04-26T09:36:54Z",
+    "intent": {
+      "name": "WhichProgram",
+      "slots": {}
+    },
+    "locale": "en-US"
+  },
+  "version": "1.0"
+}

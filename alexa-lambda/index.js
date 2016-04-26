@@ -265,6 +265,7 @@ HelloWorld.prototype.intentHandlers = {
         // response.ask("Welcome new player " + intent.slots.playername.value, "Which nut would you like to fasten?");
 		// Call Alex' Lambda Function: newTighteningProcess
 		
+		console.log('Trying to invoke newTighteningProcess');
 		var params = {
 			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:newTighteningProcess', /* should be ARN */
 			  ClientContext: null,
@@ -273,24 +274,37 @@ HelloWorld.prototype.intentHandlers = {
 			  Payload: JSON.stringify(intent.slots.playername),
 			  Qualifier: '$LATEST'
 			};
+			
 		lambda.invoke(params, function(err, data) {
-			  if (err) console.log(err, err.stack); // an error occurred
-			  else {
-				  console.log(data);           // successful response
-				  response.tell("welcome new player " + intent.slots.playername.value);
+			  if (err)
+			  {
+				  console.log(err, err.stack); 
+			  }
+			  else 
+			  {
+				  console.log("Result from lambda invocation: "+data);           // successful response
+				  response.ask("welcome new player " + intent.slots.playername.value + " which nut would you like to screw?");
+				  
+				  session.attributes.userId=intent.slots.playername.value;
 			  }
 			});		
 		
     },
     "SelectNut": function (intent, session, response) {
-        response.tell("Start fastening your nuts, begin with this nut now.");
+        // response.tell("Start fastening your nuts, begin with this nut now.");
+		
+		if (!session.userId) {
+			response.ask("i do not know you yet. please say hello and state your name.");
+			return;
+		}
+			
 		
 		var params = {
 			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:updateNexoProgram', /* should be ARN */
 			  ClientContext: null,
 			  InvocationType: 'RequestResponse',
 			  LogType: 'Tail',
-			  Payload: JSON.stringify(intent.slots.programname),
+			  Payload: JSON.stringify(intent.slots.nutname),
 			  Qualifier: '$LATEST'
 			};
 		lambda.invoke(params, function(err, data) {
@@ -299,7 +313,9 @@ HelloWorld.prototype.intentHandlers = {
 				  console.log(data);           // successful response
 				  // response.tell("welcome new player " + intent.slots.playername.value);
 				  // response.tell("Okay i am done loading the new program number " + intent.slots.program);
-				  response.tell("Start fastening your nuts, begin with this nut now.");
+				  response.tell("Start fastening your nuts, begin with this nut now: " + data.Payload);
+				  
+				  session.attributes.nut_number=data.Payload;
 			  }
 			});	
 		
@@ -326,24 +342,39 @@ HelloWorld.prototype.intentHandlers = {
     },
     "GetBattery": function (intent, session, response) {
         // Call Bosch IoT Things using JavaScript to retrieve the battery status of Nutrunner from
-        response.tell("Oh my gosh my battery is dieing. please help me and stick a new battery in.");
-    },
-    "GetProgramNumber": function (intent, session, response) {
-		// getNexoBatteryStatus
+        //response.tell("Oh my gosh my battery is dieing. please help me and stick a new battery in.");
 		
-			var params = {
-			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:getProgramNumber', /* should be ARN */
+		var params = {
+			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:getNexoBatteryStatus', /* should be ARN */
 			  ClientContext: null,
 			  InvocationType: 'RequestResponse',
 			  LogType: 'Tail',
-			  Payload: '',
+			  Payload: null,
 			  Qualifier: '$LATEST'
 			};
 			lambda.invoke(params, function(err, data) {
 			  if (err) console.log(err, err.stack); // an error occurred
 			  else {
 				  console.log(data);           // successful response
-				  response.tell("the nexo is equipped with program number " + data.program);
+				  response.tell("Oh my gosh my battery is dieing. please help me and stick a new battery in.");
+			  }
+			});		
+		
+    },
+    "WhichProgram": function (intent, session, response) {
+			var params = {
+			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:getProgramNumber', /* should be ARN */
+			  ClientContext: null,
+			  InvocationType: 'RequestResponse',
+			  LogType: 'Tail',
+			  Payload: null,
+			  Qualifier: '$LATEST'
+			};
+			lambda.invoke(params, function(err, data) {
+			  if (err) console.log(err, err.stack); // an error occurred
+			  else {
+				  console.log(data);           // successful response
+				  response.tell("the nexo is equipped with program number " + data.Payload);
 			  }
 			});		
 
@@ -357,7 +388,7 @@ HelloWorld.prototype.intentHandlers = {
 			  ClientContext: null,
 			  InvocationType: 'RequestResponse',
 			  LogType: 'Tail',
-			  Payload: '',
+			  Payload: null,
 			  Qualifier: '$LATEST'
 			};
 			lambda.invoke(params, function(err, data) {
@@ -376,7 +407,7 @@ HelloWorld.prototype.intentHandlers = {
 			  ClientContext: null,
 			  InvocationType: 'RequestResponse',
 			  LogType: 'Tail',
-			  Payload: '',
+			  Payload: null,
 			  Qualifier: '$LATEST'
 			};
 			lambda.invoke(params, function(err, data) {

@@ -1,0 +1,28 @@
+{
+  "session": {
+    "sessionId": "SessionId.1b1791ce-d308-4522-a537-803cfe2269aa",
+    "application": {
+      "applicationId": "amzn1.echo-sdk-ams.app.b24af45c-3cd9-4ae0-8de8-f5eca40af046"
+    },
+    "user": {
+      "userId": "amzn1.ask.account.AFP3ZWPOS2BGJR7OWJZ3DHPKMOMNWY4AY66FUR7ILBWANIHQN73QGG4L45SM5WUWPAJXOKK6L74X5XOHR3U6RPBUDFT7WJ2YKLRPHH5LAUJYIZURSDGRA3C6XGT2YRIK3IY27AHU4GD7DEAKUE7B77CXYMATHBERZIIOH6J4XKFLF6X25K6OPERF5FTGQFVOACXDDPIAHRCJCSA"
+    },
+    "new": true
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": "EdwRequestId.e51db49e-36c6-4283-8626-81bc902862f4",
+    "timestamp": "2016-04-26T09:19:30Z",
+    "intent": {
+      "name": "Hello",
+      "slots": {
+        "playername": {
+          "name": "playername",
+          "value": "mike"
+        }
+      }
+    },
+    "locale": "en-US"
+  },
+  "version": "1.0"
+}

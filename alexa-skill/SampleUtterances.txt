@@ -15,6 +15,17 @@ LoadProgram start {program}
 LoadProgram do load {program}
 LoadProgram do the {program}
 
+WhichProgram which program is loaded
+WhichProgram which program loaded
+WhichProgram program number
+WhichProgram what is the loaded program
+WhichProgram what is the loaded program number
+WhichProgram which program did you load
+WhichProgram which program did I load
+WhichProgram what is the current program
+WhichProgram what is the currently selected program
+WhichProgram what is the selected program
+
 SelectNut select nut {nutname}
 SelectNut select {nutname}
 SelectNut switch to nut {nutname}
