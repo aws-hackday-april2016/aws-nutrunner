@@ -224,7 +224,9 @@ var APP_ID = "amzn1.echo-sdk-ams.app.b24af45c-3cd9-4ae0-8de8-f5eca40af046"; //re
 
 var aws = require('aws-sdk');
 var lambda = new aws.Lambda({
-  region: 'ap-northeast-1' //change to your region
+  region: 'ap-northeast-1',
+  accessKeyId: 'AKIAI5YUCTXMVWPUHDZQ',
+  secretAccessKey: 'Gr+24ZB+JIHrNZT3xPzvvpVYsjYdlvQ6bD+Chjf7'
 });
  
 var HelloWorld = function () {
@@ -265,7 +267,7 @@ HelloWorld.prototype.intentHandlers = {
 		
 		var params = {
 			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:newTighteningProcess', /* should be ARN */
-			  ClientContext: '',
+			  ClientContext: null,
 			  InvocationType: 'RequestResponse',
 			  LogType: 'Tail',
 			  Payload: JSON.stringify(intent.slots.playername),
@@ -282,14 +284,10 @@ HelloWorld.prototype.intentHandlers = {
     },
     "SelectNut": function (intent, session, response) {
         response.tell("Start fastening your nuts, begin with this nut now.");
-    },
-    "LoadProgram": function (intent, session, response) {
-        response.tell("Okay i am done loading the new program");
-		// updateNexoProgram
 		
 		var params = {
 			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:updateNexoProgram', /* should be ARN */
-			  ClientContext: '',
+			  ClientContext: null,
 			  InvocationType: 'RequestResponse',
 			  LogType: 'Tail',
 			  Payload: JSON.stringify(intent.slots.programname),
@@ -299,7 +297,30 @@ HelloWorld.prototype.intentHandlers = {
 			  if (err) console.log(err, err.stack); // an error occurred
 			  else {
 				  console.log(data);           // successful response
-				  response.tell("welcome new player " + intent.slots.playername.value);
+				  // response.tell("welcome new player " + intent.slots.playername.value);
+				  // response.tell("Okay i am done loading the new program number " + intent.slots.program);
+				  response.tell("Start fastening your nuts, begin with this nut now.");
+			  }
+			});	
+		
+    },
+    "LoadProgram": function (intent, session, response) {
+		// updateNexoProgram
+		
+		var params = {
+			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:updateNexoProgram', /* should be ARN */
+			  ClientContext: null,
+			  InvocationType: 'RequestResponse',
+			  LogType: 'Tail',
+			  Payload: JSON.stringify(intent.slots.programname),
+			  Qualifier: '$LATEST'
+			};
+		lambda.invoke(params, function(err, data) {
+			  if (err) console.log(err, err.stack); // an error occurred
+			  else {
+				  console.log(data);           // successful response
+				  // response.tell("welcome new player " + intent.slots.playername.value);
+				  response.tell("Okay i am done loading the new program number " + intent.slots.program);
 			  }
 			});	
     },
@@ -311,8 +332,8 @@ HelloWorld.prototype.intentHandlers = {
 		// getNexoBatteryStatus
 		
 			var params = {
-			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:newTighteningProcess', /* should be ARN */
-			  ClientContext: '',
+			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:getProgramNumber', /* should be ARN */
+			  ClientContext: null,
 			  InvocationType: 'RequestResponse',
 			  LogType: 'Tail',
 			  Payload: '',
@@ -322,17 +343,49 @@ HelloWorld.prototype.intentHandlers = {
 			  if (err) console.log(err, err.stack); // an error occurred
 			  else {
 				  console.log(data);           // successful response
-				  response.tell("the nexo is equipped with program number 1337");
+				  response.tell("the nexo is equipped with program number " + data.program);
 			  }
 			});		
 
     },
     "GetLastJob": function (intent, session, response) {
-        response.tell("You have been doing wonderful, keep going");
+        
 		// evaluateTighteningResult
+		
+		var params = {
+			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:evaluateTighteningResult', /* should be ARN */
+			  ClientContext: null,
+			  InvocationType: 'RequestResponse',
+			  LogType: 'Tail',
+			  Payload: '',
+			  Qualifier: '$LATEST'
+			};
+			lambda.invoke(params, function(err, data) {
+			  if (err) console.log(err, err.stack); // an error occurred
+			  else {
+				  console.log(data);           // successful response
+				  response.tell("You have been doing wonderful, keep going");
+			  }
+			});	
     },
     "GetSummary": function (intent, session, response) {
-        response.tell("You guys are doing great, go on");
+        // evaluateTighteningResult
+		
+		var params = {
+			  FunctionName: 'arn:aws:lambda:ap-northeast-1:011615027733:function:evaluateTighteningResult', /* should be ARN */
+			  ClientContext: null,
+			  InvocationType: 'RequestResponse',
+			  LogType: 'Tail',
+			  Payload: '',
+			  Qualifier: '$LATEST'
+			};
+			lambda.invoke(params, function(err, data) {
+			  if (err) console.log(err, err.stack); // an error occurred
+			  else {
+				  console.log(data);           // successful response
+				  response.tell("You have been doing wonderful, keep going");
+			  }
+			});	
     },
     "AMAZON.HelpIntent": function (intent, session, response) {
         response.tell("Ask me to restart", "Ask me to restart");

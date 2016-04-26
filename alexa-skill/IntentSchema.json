@@ -14,7 +14,7 @@
       "slots": [
         {
           "name": "program",
-          "type": "LIST_OF_PROGRAMS"
+          "type": "AMAZON.NUMBER"
         }
       ]
     },
