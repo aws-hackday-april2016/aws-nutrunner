@@ -1,0 +1,11 @@
+{
+  "name": "alexa-lambda",
+  "version": "0.0.1",
+  "main": "index.js",
+  "devDependencies": {
+    "aws-sdk": "2.0.23"
+  },
+  "dependencies": {
+    "aws-sdk": "2.0.23"
+  }
+}

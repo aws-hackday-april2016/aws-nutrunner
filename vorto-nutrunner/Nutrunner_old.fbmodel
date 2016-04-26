@@ -1,0 +1,79 @@
+functionblock Nutrunner {
+	displayname "Nutrunner"
+	description "Function block model for Nutrunner"
+	vendor www.bosch.com
+	category techm/nutrunner
+	version 1.0.0-SNAPSHOT
+	
+	configuration{ 
+		//Please enter functionblock configuration details. 
+		// Beschreibt die Configuration des Nutrunner: z.B. Programme,
+		optional program as int
+	} 
+	
+	status { 
+		//Please enter functionblock status details.
+		// Status -> Aktueller Torque, Angle, Status (OK/NOK), Battery Status
+		optional lastMaintenance as dateTime
+		optional totalCycles as int
+		optional totalCyclesSinceLastMaintenance as int
+		optional currentTorque as float
+		optional currentAngle as float
+		optional nutrunnerStatus as string		
+		optional batteryStatus as int  	
+		optional systemStatus as SystemStatus
+	}		 		 
+	
+	fault {
+		//Please enter functionblock fault configuration.	
+	}
+		
+	operations{
+		//Please enter functionblock operations.		
+		getArchivedTighteningResult(tighteningId as int) returns TighteningResult
+		getTorque() returns float
+		getAngle() returns float
+		getProgram() returns ProgramConfiguration		
+		setProgram(program as int)
+		activate() returns boolean
+		deactivate() returns boolean		
+	}	
+}	
+	entity TighteningResult {
+		optional cellId as int
+		optional channelId as int
+		optional controllerName as string
+		optional idCode as int
+		optional jobNumber as int
+		optional tighteningProgramNumber as int
+		optional okCounter as int
+		optional okCounterLimit as int
+		optional tighteningStatus as string
+		optional torqueStatus as string
+		optional angleStatus as string
+		optional minTorque as float
+		optional maxTorque as float			
+		optional targetTorque as float					
+		optional torque as float
+		optional minAngle as float
+		optional maxAngle as float	
+		optional targetAngle as float	
+		optional angle as float
+		optional timestamp as dateTime
+		optional timeLastProgramChange as dateTime
+		optional tighteningId as int	  	
+	}
+	entity ProgramConfiguration {
+		mandatory programNumber as int
+		mandatory lastChange as dateTime
+		
+		
+	}
+	entity SystemStatus {
+		optional errorStatus as boolean 
+		optional errorNumber as int
+		optional errorTime as dateTime
+		optional toolReadyStatus as boolean
+		optional controllerReadyStatus as boolean
+		
+	}
