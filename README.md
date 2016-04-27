@@ -1,4 +1,6 @@
 # aws-nutrunner
+
+[![Join the chat at https://gitter.im/aws-hackday-april2016/aws-nutrunner](https://badges.gitter.im/aws-hackday-april2016/aws-nutrunner.svg)](https://gitter.im/aws-hackday-april2016/aws-nutrunner?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 AWS IoT Hackday using a Nexo Nutrunner, Virtual Reality and Amazon WebServices
 
 # Bookmarks
